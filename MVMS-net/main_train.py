@@ -12,6 +12,7 @@ from config import config
 from sklearn.metrics import roc_auc_score
 import numpy as np
 import random
+import pandas as pd
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -138,6 +139,16 @@ def train(config=config):
         test_loss, test_auc, test_TPR = test_epoch(model, criterion, test_dataloader)
 
         save_checkpoint(test_auc, model, optimizer, epoch)
+
+        result_list = [[epoch, train_loss, train_auc, train_TPR,
+                        val_loss, val_auc, val_TPR,
+                        test_loss, test_auc, test_TPR]]
+        columns = ['epoch', 'train_loss', 'train_auc', 'train_TPR',
+                   'val_loss', 'val_auc', 'val_TPR',
+                   'test_loss', 'test_auc', 'test_TPR']
+        dt = pd.DataFrame(result_list, columns=columns)
+        result_csv = os.path.join('./CPSC_RESULTS', config.model_name, 'result.csv')
+        dt.to_csv(result_csv, mode='a', header=not os.path.exists(result_csv), index=False)
 
         print('time:%s\n' % (utils.print_time_cost(since)))
 
