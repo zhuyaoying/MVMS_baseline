@@ -84,7 +84,9 @@ def load_datasets(datafolder=None, experiment=None):
     '''
     experiment = experiment
 
-    if datafolder == '../data/ptbxl/':
+    datafolder = datafolder.rstrip('/') + '/'
+
+    if 'ptbxl' in datafolder:
         experiments = {
             'exp0': ('exp0', 'all'),
             'exp1': ('exp1', 'diagnostic'),
@@ -96,7 +98,7 @@ def load_datasets(datafolder=None, experiment=None):
         name, task = experiments[experiment]
         ded = DownLoadECGData(name, task, datafolder)
         X_train, y_train, X_val, y_val, X_test, y_test = ded.preprocess_data()
-    elif datafolder == '../data/CPSC/':
+    elif 'CPSC' in datafolder:
         ded = DownLoadECGData('exp_CPSC', 'all', datafolder)
         X_train, y_train, X_val, y_val, X_test, y_test = ded.preprocess_data()
     else:
