@@ -1,0 +1,33 @@
+# MVMS-net dependencies
+# Install with: pip install -r requirements.txt
+#
+# PyTorch: install separately based on your hardware:
+#   CPU-only:      pip install torch==2.11.0
+#   GPU (CUDA 11.8): pip install torch==2.11.0+cu118 --index-url https://download.pytorch.org/whl/cu118
+#   GPU (CUDA 12.1): pip install torch==2.11.0+cu121 --index-url https://download.pytorch.org/whl/cu121
+
+# ── Core (all models) ─────────────────────────────────────────────────────────
+torch==2.11.0
+numpy==2.4.4
+
+# ── Data loading & evaluation (required by main_train.py) ────────────────────
+pandas
+scipy
+scikit-learn
+tqdm
+wfdb
+
+# ── TSL baseline models: PatchTST / TimesNet / iTransformer ──────────────────
+# Required by layers/SelfAttention_Family.py and layers/Embed.py
+einops==0.8.2
+
+# ── MiniRocket (minirocket_train.py only) ────────────────────────────────────
+numba
+
+# ── Optional: CPSC dataset conversion (convert_cpsc.py only) ─────────────────
+# stratisfy
+
+# ── Optional: MambaSL — requires Linux + CUDA, not available on Windows ───────
+# pip install mamba_ssm causal_conv1d
+# mamba_ssm
+# causal_conv1d
