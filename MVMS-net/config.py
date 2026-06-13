@@ -32,7 +32,7 @@ class Config:
 
     batch_size = 64
 
-    max_epoch = 100
+    max_epoch = 50
 
     lr = 0.001
 
