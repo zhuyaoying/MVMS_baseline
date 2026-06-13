@@ -10,7 +10,7 @@ class Config:
     seed = 10
 
     # path
-    datafolder = '../data/CPSC/'
+    datafolder = '../../data/CPSC/'
 
     #
     experiment = 'cpsc'
