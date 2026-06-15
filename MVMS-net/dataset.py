@@ -59,7 +59,7 @@ class DownLoadECGData:
         # Select relevant data and convert to one-hot
         data, labels, Y, _ = select_data(data, labels, self.task, self.min_samples)
 
-        if self.datafolder == '../data/CPSC/':
+        if self.datafolder == '../data/CPSC/' or 'Chapman' in self.datafolder:
             data = data_slice(data)
 
         # 10th fold for testing (9th for now)
@@ -100,6 +100,9 @@ def load_datasets(datafolder=None, experiment=None):
         X_train, y_train, X_val, y_val, X_test, y_test = ded.preprocess_data()
     elif 'CPSC' in datafolder:
         ded = DownLoadECGData('exp_CPSC', 'all', datafolder)
+        X_train, y_train, X_val, y_val, X_test, y_test = ded.preprocess_data()
+    elif 'Chapman' in datafolder:
+        ded = DownLoadECGData('exp_Chapman', 'all', datafolder)
         X_train, y_train, X_val, y_val, X_test, y_test = ded.preprocess_data()
     else:
         X_train, y_train, X_val, y_val, X_test, y_test = hf_dataset(datafolder)

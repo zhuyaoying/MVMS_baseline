@@ -27,7 +27,33 @@ def load_dataset(path, sampling_rate, release=False):
         # Load raw signal data
         X = load_raw_data_cpsc(Y, sampling_rate, path)
 
+    elif path.split('/')[-2] == 'Chapman':
+        # load and convert annotation data
+        Y = pd.read_csv(path + 'chapman_database.csv', index_col='ecg_id')
+        Y.scp_codes = Y.scp_codes.apply(lambda x: ast.literal_eval(x))
+
+        # Load raw signal data
+        X = load_raw_data_chapman(Y, sampling_rate, path)
+
     return X, Y
+
+
+def load_raw_data_chapman(df, sampling_rate, path):
+    if sampling_rate == 100:
+        if os.path.exists(path + 'raw100.npy'):
+            data = np.load(path + 'raw100.npy', allow_pickle=True)
+        else:
+            data = [wfdb.rdsamp(path + 'records100/' + str(f)) for f in tqdm(df.index)]
+            data = np.array([signal for signal, meta in data])
+            pickle.dump(data, open(path + 'raw100.npy', 'wb'), protocol=4)
+    elif sampling_rate == 500:
+        if os.path.exists(path + 'raw500.npy'):
+            data = np.load(path + 'raw500.npy', allow_pickle=True)
+        else:
+            data = [wfdb.rdsamp(path + 'records500/' + str(f)) for f in tqdm(df.index)]
+            data = np.array([signal for signal, meta in data])
+            pickle.dump(data, open(path + 'raw500.npy', 'wb'), protocol=4)
+    return data
 
 
 def load_raw_data_cpsc(df, sampling_rate, path):

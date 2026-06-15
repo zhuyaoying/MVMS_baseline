@@ -10,6 +10,8 @@ class Config:
     seed = 10
 
     # path
+    # CPSC dataset:    datafolder = '../../data/CPSC/'
+    # Chapman dataset: datafolder = '../../data/Chapman/'
     datafolder = '../../data/CPSC/'
 
     #
