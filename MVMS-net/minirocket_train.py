@@ -159,7 +159,7 @@ def main(data_name='ptbxl'):
         ded = DownLoadECGData('exp0', 'rhythm', '../data/ptbxl/')
         X_training, Y_training, X_validation, Y_validation, X_test, Y_test = ded.preprocess_data()
     elif data_name == 'cpsc':
-        ded = DownLoadECGData('exp_cpsc', 'all', '../data/CPSC/')
+        ded = DownLoadECGData('exp_cpsc', 'all', '../../data/CPSC/')
         X_training, Y_training, X_validation, Y_validation, X_test, Y_test = ded.preprocess_data()
     else:
         X_training, Y_training, X_validation, Y_validation, X_test, Y_test = hf_dataset()

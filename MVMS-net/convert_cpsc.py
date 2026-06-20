@@ -7,7 +7,7 @@ from scipy.ndimage import zoom
 from scipy.io import loadmat
 from stratisfy import stratisfy_df
 
-output_folder = 'data/CPSC/'
+output_folder = 'data/chapman/'
 output_datafolder_100 = output_folder+ '/records100/'
 output_datafolder_500 = output_folder+ '/records500/'
 if not os.path.exists(output_folder):

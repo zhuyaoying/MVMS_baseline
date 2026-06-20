@@ -59,7 +59,7 @@ class DownLoadECGData:
         # Select relevant data and convert to one-hot
         data, labels, Y, _ = select_data(data, labels, self.task, self.min_samples)
 
-        if self.datafolder == '../data/CPSC/' or 'Chapman' in self.datafolder:
+        if self.datafolder == '../../data/CPSC/' or 'Chapman' in self.datafolder:
             data = data_slice(data)
 
         # 10th fold for testing (9th for now)

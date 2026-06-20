@@ -11,8 +11,8 @@ class Config:
 
     # path
     # CPSC dataset:    datafolder = '../../data/CPSC/'
-    # Chapman dataset: datafolder = '../../data/Chapman/'
-    datafolder = '../../data/CPSC/'
+    datafolder = '../../data/Chapman/'
+    # datafolder = '../../data/CPSC/'
 
     #
     experiment = 'cpsc'
@@ -22,9 +22,9 @@ class Config:
     MyNet6View, resnet1d_wang, xresnet1d101, inceptiontime, fcn_wang, lstm, lstm_bidir, vit, mobilenetv3_small
     '''
     # PatchTST, TimesNet, iTransformer, MambaSL (Linux+CUDA only)
-    model_name = 'MyNet6View'
+    model_name = 'TimesNet'
 
-    model_name2 = 'MyNet'
+    model_name2 = 'TimesNet'
 
     # ECG sequence length (100 Hz → 1000, 500 Hz → 5000)
     seq_len = 1000
@@ -41,7 +41,7 @@ class Config:
     device_num = 1
 
     # eg: MyNet6View_all_checkpoint_best_tpr.pth
-    checkpoints = 'MyNet6View_exp0_checkpoint_best_auc.pth'
+    checkpoints = 'TimesNet_wang_exp0_checkpoint_best_auc.pth'
 
     # knowledge distillation param
     alpha = 0.5

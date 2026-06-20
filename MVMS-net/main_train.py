@@ -154,7 +154,7 @@ def train(config=config):
 
 
 if __name__ == '__main__':
-    config.datafolder = '../data/CPSC/'
+    config.datafolder = '../../data/Chapman/'
     config.experiment = 'cpsc'
-    config.seed = 7
+    config.seed = 10
     train(config)
